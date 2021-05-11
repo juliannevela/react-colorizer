@@ -4,7 +4,7 @@ import Display from '../components/display/Display';
 export default class ColorRandomizer extends Component {
   state = {
     color: '',
-    meme: '',
+    letters: ['b', 'e', 'l', 'i', 'v', 'n', 'y', 'o', 'u', 'r', 's', 'f'],
   };
 
   getRandColor = () => {
@@ -17,13 +17,11 @@ export default class ColorRandomizer extends Component {
     setInterval(() => {
       const newColor = this.getRandColor();
 
-      if (newColor !== this.state.color)
-        this.setState({ color: newColor, meme: '' });
-      else
-        this.setState({
-          color: '#FFFFFF',
-          meme: 'https://i.dailymail.co.uk/i/pix/2016/03/18/15/324D202500000578-3498922-image-a-33_1458315465874.jpg',
-        });
+      // TODO attempting to have each letter change independently
+      // this.state.letters.forEach(letter => {
+      //     this.setState
+      // });
+      this.setState({ color: newColor, meme: '' });
     }, 1000);
 
   componentDidMount = () => {
@@ -31,8 +29,8 @@ export default class ColorRandomizer extends Component {
   };
 
   render() {
-    const { color, meme } = this.state;
+    const { color } = this.state;
 
-    return <Display randColor={color} meme={meme} />;
+    return <Display randColor={color} />;
   }
 }
